@@ -1,8 +1,15 @@
 #!/usr/bin/env bash
-git commit -am "Save local changes"
-  git checkout -B gh-pages
-  git add -f build /Users/nikos/WebstormProjects/solar-popup/node_modules/systemjs/dist/system.js
-  git commit -am "Rebuild website"
-  git filter-branch -f --prune-empty --subdirectory-filter build
-  git push -f origin gh-pages
-  git checkout -
+
+exists=`git show-ref refs/heads/gh-pages`
+if ! [ -n "$exists" ]; then
+    echo 'branch exists!'
+    git checkout -b "gh-pages"
+else
+    git checkout "gh-pages"
+fi
+
+git merge master
+git add dist/* -f
+git commit -a -m 'build files'
+git push origin gh-pages
+git checkout master

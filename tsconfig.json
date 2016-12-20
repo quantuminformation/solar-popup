@@ -6,10 +6,7 @@
     "sourceRoot": "./src/SolarPopup.ts",
     "rootDir": "./src/",
     "inlineSources": true,
-
-
     "inlineSourceMap": true
-
   },
   "exclude": [
     "node_modules"
