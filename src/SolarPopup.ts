@@ -3,12 +3,17 @@ import {IComponent} from "./IComponent";
 import {constants} from "./constants";
 
 /**
- * Show a popup form with a google form to be filled in.
+ * A Popup that can take any content
+ *
+ * Features
+ * Closes in response to [ESC] keypress, submit events.
+ * Adds modal background that fades in with CSS3 transitions
+ * Popup itself slides in with CSS3 transitions
  *
  * @constructor
  */
-
-export class SolarPopup implements IComponent {
+declare var module
+module.exports = class SolarPopup implements IComponent {
   destroyBoundWithThis = this.destroy.bind(this)
   modalBackground = new ModalBackground()
   private hostElement: HTMLElement

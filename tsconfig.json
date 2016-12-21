@@ -1,10 +1,6 @@
 {
   "compilerOptions": {
-    "module": "system",
     "target": "es5",
-    "outFile":"./build/solar-popup.js",
-    "sourceRoot": "./src/SolarPopup.ts",
-    "rootDir": "./src/",
     "inlineSources": true,
     "inlineSourceMap": true
   },
@@ -12,3 +8,5 @@
     "node_modules"
   ]
 }
+
+

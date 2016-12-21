@@ -1,14 +1,20 @@
 {
   "name": "solar-popup",
-  "version": "0.1.0",
+  "version": "0.2.4",
   "description": "",
   "main": "build/index.js",
+  "files": [
+    "demo/index.html",
+    "build/solar-popup.js",
+    "build/solar-popup.css"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm run pcss & npm run watch",
+    "build": "npm run pcss && webpack",
+    "build-prod": "npm run pcss && webpack -p",
     "deploy": "npm run build && sh deploy.sh ",
-    "pcss": "postcss -w src/index.pcss  -o build/solar-popup.css -c old.config.json src/index.pcss ",
-    "watch": "tsc --watch "
+    "pcss": "postcss  -o build/solar-popup.css -c postcss.config.json src/index.pcss ",
+    "watch-pcss": "postcss -w src/index.pcss  -o build/solar-popup.css -c postcss.config.json src/index.pcss ",
+    "watch": "webpack --watch --watch-poll & npm run watch-pcss"
   },
   "repository": {
     "type": "git",
@@ -23,12 +29,15 @@
   "homepage": "https://github.com/quantumjs/solar-popup#readme",
   "devDependencies": {
     "autoprefixer": "^6.5.4",
+    "html-webpack-plugin": "^2.24.1",
     "postcss-calc": "^5.3.1",
     "postcss-cli": "^2.6.0",
     "postcss-css-variables": "^0.6.0",
     "postcss-nested": "^1.0.0",
     "postcss-smart-import": "^0.6.0",
-    "systemjs": "^0.19.41",
-    "typescript": "^2.1.4"
+    "ts-loader": "^1.0.0",
+    "typescript": "^2.1.4",
+    "webpack": "^2.1.0-beta.25",
+    "webpack-build-notifier": "^0.1.13"
   }
 }
