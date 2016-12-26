@@ -1,8 +1,9 @@
 {
   "name": "solar-popup",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "",
-  "main": "build/index.js",
+  "main": "build/solar-popup.js",
+  "types": "build/index.d.ts",
   "files": [
     "demo/index.html",
     "build/solar-popup.js",
@@ -14,7 +15,8 @@
     "deploy": "npm run build && sh deploy.sh ",
     "pcss": "postcss  -o build/solar-popup.css -c postcss.config.json src/index.pcss ",
     "watch-pcss": "postcss -w src/index.pcss  -o build/solar-popup.css -c postcss.config.json src/index.pcss ",
-    "watch": "webpack --watch --watch-poll & npm run watch-pcss"
+    "watch": "webpack --watch --watch-poll & npm run watch-pcss",
+    "dts": "dts-generator --name solar-popup --project /src/SolarPopup.ts --out SolarPopup.d.ts"
   },
   "repository": {
     "type": "git",
@@ -29,6 +31,7 @@
   "homepage": "https://github.com/quantumjs/solar-popup#readme",
   "devDependencies": {
     "autoprefixer": "^6.5.4",
+    "dts-generator": "^2.0.0",
     "html-webpack-plugin": "^2.24.1",
     "postcss-calc": "^5.3.1",
     "postcss-cli": "^2.6.0",
