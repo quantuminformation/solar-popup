@@ -3,7 +3,7 @@
   "version": "0.2.6",
   "description": "",
   "main": "build/solar-popup.js",
-  "types": "build/index.d.ts",
+  "types": "solar-popup.d.ts",
   "files": [
     "demo/index.html",
     "build/solar-popup.js",
