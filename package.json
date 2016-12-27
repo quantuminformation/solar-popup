@@ -1,13 +1,15 @@
 {
   "name": "solar-popup",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "",
   "main": "build/solar-popup.js",
   "types": "build/index.d.ts",
   "files": [
     "demo/index.html",
     "build/solar-popup.js",
-    "build/solar-popup.css"
+    "build/solar-popup.css",
+    "solar-popup.d.ts",
+    "src/IComponent.ts"
   ],
   "scripts": {
     "build": "npm run pcss && webpack",
