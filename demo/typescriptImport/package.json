@@ -2,6 +2,7 @@
   "name": "typescriptImport",
   "main": "index.js",
   "devDependencies": {
+    "html-webpack-plugin": "^2.24.1",
     "solar-popup": "^0.2.6",
     "ts-loader": "^1.0.0",
     "typescript": "^2.1.4",

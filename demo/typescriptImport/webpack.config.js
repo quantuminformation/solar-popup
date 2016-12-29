@@ -1,6 +1,7 @@
 var path = require("path");
 var webpack = require("webpack");
 var WebpackBuildNotifierPlugin = require("webpack-build-notifier");
+var HtmlWebpackPlugin = require("html-webpack-plugin");
 
 
 const PATHS = {
@@ -33,6 +34,11 @@ module.exports = {
   plugins: [
     new WebpackBuildNotifierPlugin({
       title: "My Project Webpack Build"
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Webpack boilerplate',
+      hash: true,
+      filename: 'index.html',
     })
   ]
 };

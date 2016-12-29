@@ -1,11 +1,11 @@
 {
   "name": "solar-popup",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "",
   "main": "build/solar-popup.js",
   "types": "build/src/SolarPopup.d.ts",
   "files": [
-    "demo/index.html",
+    "demo/browserImport/index.html",
     "build/solar-popup.js",
     "build/solar-popup.css",
     "build/src/"
@@ -17,7 +17,7 @@
     "pcss": "postcss  -o build/solar-popup.css -c postcss.config.json src/index.pcss ",
     "watch-pcss": "postcss -w src/index.pcss  -o build/solar-popup.css -c postcss.config.json src/index.pcss ",
     "watch": "webpack --watch --watch-poll & npm run watch-pcss",
-    "prepublish": "webpack -p & npm run watch-pcss"
+    "prepublish": "webpack -p & npm run pcss"
 
   },
   "repository": {
