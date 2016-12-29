@@ -12,8 +12,7 @@ import {constants} from "./constants";
  *
  * @constructor
  */
-declare var module
-module.exports = class SolarPopup implements IComponent {
+export default class SolarPopup implements IComponent {
   destroyBoundWithThis = this.destroy.bind(this)
   modalBackground = new ModalBackground()
   private hostElement: HTMLElement
