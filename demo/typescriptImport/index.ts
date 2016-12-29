@@ -1,4 +1,5 @@
 import SolarPopup from 'solar-popup'
+//import 'node_modules/solar-popup/build/solar-popup.css'
 
 function showSimplePopup() {
   var child = document.createElement('DIV')
@@ -8,5 +9,7 @@ function showSimplePopup() {
            <button type="submit">Clicking a submit button will also close it</button>
         `
   var popup = new SolarPopup(child)
-  popup.show(child)
+  popup.show()
 }
+
+showSimplePopup()

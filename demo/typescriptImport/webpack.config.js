@@ -39,6 +39,7 @@ module.exports = {
       title: 'Webpack boilerplate',
       hash: true,
       filename: 'index.html',
+      template: 'index.html'
     })
   ]
 };
