@@ -18,7 +18,8 @@ I made this popup was for my own consumption, but you are free to use it too!
 
 ## Demo
 
-  [Basic usage](https://quantumjs.github.io/solar-popup/demo/)
+  [Basic usage](https://quantumjs.github.io/solar-popup/demo/browserImport)
+  [TypeScript usage](https://quantumjs.github.io/solar-popup/demo/typescriptImport)
 
 ## Roadmap
 

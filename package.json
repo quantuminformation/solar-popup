@@ -18,7 +18,6 @@
     "watch-pcss": "postcss -w src/index.pcss  -o build/solar-popup.css -c postcss.config.json src/index.pcss ",
     "watch": "webpack --watch --watch-poll & npm run watch-pcss",
     "prepublish": "webpack -p & npm run pcss"
-
   },
   "repository": {
     "type": "git",
@@ -41,7 +40,7 @@
     "postcss-smart-import": "^0.6.0",
     "ts-loader": "^1.0.0",
     "typescript": "^2.1.4",
-    "webpack": "2.2.0-rc.3",
+    "webpack": "2.2.0-rc.4",
     "webpack-build-notifier": "^0.1.13"
   }
 }

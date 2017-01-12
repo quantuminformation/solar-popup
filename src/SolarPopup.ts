@@ -29,7 +29,7 @@ export default class SolarPopup implements IComponent {
    */
   show() {
 
-    const tempElement = document.createElement('DIV')
+    const tempElement:HTMLElement = document.createElement('DIV')
 
     tempElement.innerHTML =
       `<article class='solar-popup' data-is-initialising="true">
