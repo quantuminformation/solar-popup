@@ -1,9 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "inlineSources": true,
-    "inlineSourceMap": true,
-    "declaration": true
+    "target": "es5"
   },
   "exclude": [
     "node_modules"

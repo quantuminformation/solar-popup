@@ -16,9 +16,7 @@ module.exports = {
   output: {
     path: PATHS.build,
     filename: '[name].js',
-    library: 'SolarPopup',
-    libraryTarget: 'umd',
-    umdNamedDefine:true
+    library: 'SolarPopup'
   },
   devtool: "source-map",
   module: {
@@ -26,6 +24,14 @@ module.exports = {
       {
         test: /\.ts$/,
         loader: 'ts-loader'
+      },
+      {
+        test: /\.p?css$/,
+        loaders: [
+          'style-loader',
+          'css-loader?importLoaders=1,url=false',
+          'postcss-loader'
+        ]
       }
     ]
   },

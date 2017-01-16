@@ -1,3 +1,7 @@
+/* mobile first styles */
+
+@import "css-variables/breakpoints/generic.pcss";
+
 :root {
   /*dark theme*/
   --background: #06071a;
@@ -13,7 +17,7 @@
   position: fixed;
   opacity: 0.9;
   width: var(--popup-width);
-  top:20%;
+  top: 5px;
   box-sizing: border-box;
   color: var(--color);
   transition: all 300ms ease;
@@ -30,20 +34,16 @@
     /*todo cater for bigger screens*/
     left: 100%;
   }
-}
 
-.solar-popup a {
-  position: absolute;
-  right: 10px;
-  top: 5px;
-  font-size: 16px;
-}
-
-.solar-popup.subtitle {
-  color: #55595c;
-}
-
-.solar-popup .closeDialogue {
-  cursor: pointer;
-  text-decoration: underline;
+  @media (--minSmall) {
+    top: 20%;
+  }
+  .close {
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    font-size: 16px;
+    padding: 2px;
+  }
 }

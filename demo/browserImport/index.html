@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
-  <link rel="stylesheet" href="../../build/solar-popup.css">
   <script src="../../build/solar-popup.js"></script>
 </head>
 <body>
@@ -24,7 +23,7 @@
            <p>Also press the [ESC] key to close]</p>
            <button type="submit">Clicking a submit button will also close it</button>
         `
-    var popup = new SolarPopup(child)
+    var popup = new SolarPopup.default(child)
     popup.show(child)
   }
 
@@ -47,7 +46,7 @@
             </div>
           </form>
         `
-    var popup = new SolarPopup(child)
+    var popup = new SolarPopup.default(child)
     popup.show(child)
   }
   showBigPopup()

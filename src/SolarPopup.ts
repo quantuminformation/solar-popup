@@ -1,6 +1,7 @@
 import {ModalBackground} from './ModalBackground'
-import {IComponent} from "./IComponent";
-import {constants} from "./constants";
+import {IComponent} from "./IComponent"
+import {constants} from "./constants"
+import './SolarPopup.pcss'
 
 /**
  * A Popup that can take any content
@@ -33,7 +34,7 @@ export default class SolarPopup implements IComponent {
 
     tempElement.innerHTML =
       `<article class='solar-popup' data-is-initialising="true">
-        <a class='closeDialogue'>Close ✕</a>
+        <a class='close'><!--&#x274c;-->&#x2716;</a>
           <div class="childContainer"></div>
        </article>`
     tempElement.querySelector(".childContainer").appendChild(this.child)

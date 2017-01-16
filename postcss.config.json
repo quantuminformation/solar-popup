@@ -1,6 +1,0 @@
-{
-  "use": ["postcss-smart-import", "postcss-css-variables", "autoprefixer","postcss-calc","postcss-nested"],
-  "autoprefixer": {
-    "browsers": "> 5%"
-  }
-}
