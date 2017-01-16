@@ -1,6 +1,6 @@
 {
   "name": "solar-popup",
-  "version": "0.2.9",
+  "version": "0.3.1",
   "description": "",
   "main": "build/solar-popup.js",
   "types": "build/src/SolarPopup.d.ts",
@@ -44,7 +44,7 @@
     "ts-loader": "^1.0.0",
     "typescript": "^2.1.4",
     "vanilla-typescript": "^0.1.1",
-    "webpack": "2.2.0-rc.4",
+    "webpack": "2.2.0-rc.7",
     "webpack-build-notifier": "^0.1.13"
   }
 }
