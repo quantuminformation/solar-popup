@@ -16,7 +16,9 @@ module.exports = {
   output: {
     path: PATHS.build,
     filename: '[name].js',
-    library: 'SolarPopup'
+    library: 'SolarPopup',
+    libraryTarget: 'umd',
+    umdNamedDefine:true
   },
   devtool: "source-map",
   module: {

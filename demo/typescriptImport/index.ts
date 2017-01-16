@@ -1,5 +1,4 @@
 import SolarPopup from 'solar-popup'
-//import 'node_modules/solar-popup/build/solar-popup.css'
 
 function showSimplePopup() {
   var child = document.createElement('DIV')
