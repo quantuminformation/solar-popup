@@ -1,5 +1,5 @@
 import {ModalBackground} from './ModalBackground'
-import {IComponent} from "./IComponent"
+import {IComponent} from "vanilla-typescript"
 import {constants} from "./constants"
 import './SolarPopup.pcss'
 
@@ -86,7 +86,6 @@ export default class SolarPopup implements IComponent {
       this.hostElement.parentElement.removeChild(this.hostElement)
     }.bind(this), constants.TRANSITION_TIMES)
   }
-
 }
 
 

@@ -1,5 +1,6 @@
 
 import {constants} from "./constants";
+import './ModalBackground.pcss'
 export class ModalBackground {
   private destroyBoundWithThis = this.destroy.bind(this)
   private hostElement: HTMLElement

@@ -1,7 +1,7 @@
 var path = require("path");
 var webpack = require("webpack");
 var WebpackBuildNotifierPlugin = require("webpack-build-notifier");
-
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const PATHS = {
   src: path.join(__dirname, './src'),
@@ -28,11 +28,10 @@ module.exports = {
       },
       {
         test: /\.p?css$/,
-        loaders: [
-          'style-loader',
-          'css-loader?importLoaders=1,url=false',
-          'postcss-loader'
-        ]
+        use: ExtractTextPlugin.extract({
+          fallbackLoader: "style-loader",
+          loader: "css-loader?importLoaders=1,url=false!postcss-loader"
+        })
       }
     ]
   },
@@ -43,6 +42,8 @@ module.exports = {
   plugins: [
     new WebpackBuildNotifierPlugin({
       title: "My Project Webpack Build"
-    })
+    }),
+    new ExtractTextPlugin("styles.css"),
+
   ]
 };
