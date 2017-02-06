@@ -6,6 +6,24 @@ A lovely little vanilla TypeScript popup.
 You can install into your application by running 
 npm install --save-dev solar-popup
 
+You can then use it like so:
+```js
+import SolarPopup from 'solar-popup'
+
+function showSimplePopup() {
+  var child = document.createElement('DIV')
+  child.innerHTML =
+    `<p>This is some content that can be supplied to the popup</p>
+           <p>Also press the [ESC] key to close]</p>
+           <button type="submit">Clicking a submit button will also close it</button>
+        `
+  var popup = new SolarPopup(child)
+  popup.show()
+}
+
+showSimplePopup()
+```
+
 ## Why
 
 I made this popup was for my own consumption, but you are free to use it too!
