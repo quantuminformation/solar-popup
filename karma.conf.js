@@ -20,6 +20,9 @@ module.exports = (config) => {
 
     browsers: ["Chrome"],
 
-    singleRun: false
+    singleRun: false,
+    karmaTypescriptConfig: {
+      tsconfig: "./tsconfig.json"
+    }
   });
 };
