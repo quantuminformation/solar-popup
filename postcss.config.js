@@ -4,6 +4,6 @@ module.exports = {
     require('postcss-custom-media')({/* ...options */}),
     require('postcss-css-variables')({/* ...options */}),
     require('postcss-nested')({/* ...options */}),
-    require('autoprefixer')({ "browsers": "> 5%"})
+    require('autoprefixer')({ 'browsers': '> 5%'})
   ]
 }

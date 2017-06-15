@@ -1,4 +1,7 @@
-import SolarPopup from 'solar-popup'
+import SolarPopup from '../../'
+
+import '../../src/index.pcss'
+
 
 function showSimplePopup() {
   var child = document.createElement('DIV')
@@ -11,4 +14,26 @@ function showSimplePopup() {
   popup.show()
 }
 
-showSimplePopup()
+function showBigPopup() {
+  var child = document.createElement('DIV')
+  child.innerHTML =
+    `<form>
+              <h3>Some amazing form</h3>
+              <p>The submit won't fire until all the fields are valid</p>
+              <div class="form-group">
+                <input type="number"  required placeholder="Project budget">
+                <input type="range"  required placeholder="Project range">
+                <input type="date"  required placeholder="Project date">
+                <input type="reset">
+              </div>
+
+
+              <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe"
+                                        class="btn btn-success" style="margin-top: 10px"></div>
+            </div>
+          </form>
+        `
+  var popup = new SolarPopup(child)
+  popup.show()
+}
+showBigPopup()

@@ -22,7 +22,7 @@ export const constants = {
     L: 76,
     P: 80,
     Q: 81,
-    TILDA: 192,
+    TILDA: 192
   },
 
   TRANSITION_TIMES: 300, // this should match css transition times (we often fade things out then remove them)
@@ -30,8 +30,6 @@ export const constants = {
     XS: 400,
     SM: 680,
     MD: 1024,
-    LG: 1200,
-  },
+    LG: 1200
+  }
 }
-
-

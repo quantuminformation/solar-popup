@@ -1,7 +1,7 @@
-import {ModalBackground} from './ModalBackground'
-import {IComponent} from "vanilla-typescript"
-import {constants} from "./constants"
+import { ModalBackground } from './ModalBackground'
+import { IComponent, KeyCodes } from 'vanilla-typescript'
 import './SolarPopup.pcss'
+import { constants } from './constants'
 
 /**
  * A Popup that can take any content
@@ -19,47 +19,46 @@ export default class SolarPopup implements IComponent {
   private hostElement: HTMLElement
   private child: HTMLElement
 
-  constructor(child: HTMLElement) {
+  constructor (child: HTMLElement) {
     this.child = child
   }
-
 
   /**
    * Shows
    * @param {Element} child we need to keep the reference to keep custom functionality in the child
    */
-  show() {
+  show () {
 
-    const tempElement:HTMLElement = document.createElement('DIV')
+    const tempElement: HTMLElement = document.createElement('DIV')
 
     tempElement.innerHTML =
-      `<article class='solar-popup' data-is-initialising="true">
-        <a class='close'><!--&#x274c;-->&#x2716;</a>
-          <div class="childContainer"></div>
+      `<article class='solar-popup' data-is-initialising='true'>
+        <a class='close'><!--&#x274c-->&#x2716</a>
+          <div class='childContainer'></div>
        </article>`
-    tempElement.querySelector(".childContainer").appendChild(this.child)
+    tempElement.querySelector('.childContainer').appendChild(this.child)
 
-    this.hostElement = <HTMLElement>tempElement.firstChild
+    this.hostElement = tempElement.firstChild as HTMLElement
     document.body.appendChild(this.hostElement)
-    let currentWidth = window.getComputedStyle(document.querySelector("p"))
+    let currentWidth = window.getComputedStyle(document.querySelector('p'))
 
     this.modalBackground.render()
 
     setTimeout(() => {
-      //this triggers a css change
-      //let currentWidth = window.getComputedStyle(document.querySelector("p")) }, 50)
-      this.hostElement.dataset["isInitialising"] = "false"
+      // todo use dynamic width for better centering
+      // let currentWidth = window.getComputedStyle(document.querySelector('p')) }, 50)
+      this.hostElement.dataset['isInitialising'] = 'false'
     })
     this.addListeners()
   }
 
-  addListeners() {
+  addListeners () {
     const closeElement = this.hostElement.querySelector('a')
     closeElement.addEventListener('click', this.destroyBoundWithThis)
     this.hostElement.classList.remove('offscreen')
 
     document.addEventListener('keyup', function (event) {
-      if (event.keyCode === constants.KEYS.ESC) {
+      if (event.keyCode === KeyCodes.ESC) {
         this.destroyBoundWithThis()
       }
     }.bind(this))
@@ -69,23 +68,25 @@ export default class SolarPopup implements IComponent {
       event.preventDefault()
     }.bind(this))
 
-
     // handle the first child submit button click, close popup by default
     // this is a convention that gets popup to behave in sensible way
     const submitBtn = this.hostElement.querySelector('button[type="submit"]')
     if (submitBtn) {
-      submitBtn.addEventListener("click", this.destroyBoundWithThis)
+      submitBtn.addEventListener('click', this.destroyBoundWithThis)
     }
   }
 
-  destroy() {
-    //vistual indicator for this element and delegate to the modal
-    this.hostElement.dataset["isDestructing"] = "true"
+  destroy (): Promise<any> {
+    // visual indicator for this element and delegate to the modal
+    this.hostElement.dataset['isDestructing'] = 'true'
     this.modalBackground.destroy()
-    setTimeout(function () {
-      this.hostElement.parentElement.removeChild(this.hostElement)
-    }.bind(this), constants.TRANSITION_TIMES)
+
+    return new Promise(
+      (resolve) => {
+        setTimeout(() => {
+          this.hostElement.parentElement.removeChild(this.hostElement)
+          resolve()
+        }, constants.TRANSITION_TIMES)
+      })
   }
 }
-
-

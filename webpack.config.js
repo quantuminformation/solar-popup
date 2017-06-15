@@ -1,17 +1,17 @@
-var path = require("path");
-var webpack = require("webpack");
-var WebpackBuildNotifierPlugin = require("webpack-build-notifier");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+var path = require('path')
+var webpack = require('webpack')
+var WebpackBuildNotifierPlugin = require('webpack-build-notifier')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 const PATHS = {
   src: path.join(__dirname, './src'),
   build: path.join(__dirname, './build')
-};
+}
 
 module.exports = {
 
   entry: {
-    "solar-popup": PATHS.src + '/SolarPopup.ts'
+    'solar-popup': PATHS.src + '/SolarPopup.ts'
   },
   output: {
     path: PATHS.build,
@@ -19,21 +19,37 @@ module.exports = {
     library: 'SolarPopup',
     libraryTarget: 'umd'
   },
-  devtool: "source-map",
+  devtool: 'source-map',
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.ts$/,
-        loader: 'ts-loader'
+        use: [{
+          //loader: 'ts-loader'
+          loader: 'awesome-typescript-loader'
+
+        }]
+        ,
+        exclude:new RegExp('.test.ts')
       },
       {
         test: /\.p?css$/,
-        use: ExtractTextPlugin.extract({
-          fallbackLoader: "style-loader",
-          loader: "css-loader?importLoaders=1,url=false!postcss-loader"
-        })
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1, url: false
+            }
+          },
+          {
+            loader: 'postcss-loader'
+          }
+        ]
       }
-    ]
+    ],
   },
   resolve: {
     // you can now require('file') instead of require('file.js')
@@ -41,9 +57,11 @@ module.exports = {
   },
   plugins: [
     new WebpackBuildNotifierPlugin({
-      title: "My Project Webpack Build"
+      title: 'My Project Webpack Build'
     }),
-    new ExtractTextPlugin("solar-popup.css"),
+    new ExtractTextPlugin('solar-popup.css'),
+    new webpack.IgnorePlugin(/test\.ts$/)
+
 
   ]
-};
+}

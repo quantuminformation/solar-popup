@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es2015",
     "declaration": true
   },
   "exclude": [
     "node_modules",
-    "demo"
+    "demo",
+    "**/*.test.ts"
   ]
 }
-
 

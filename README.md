@@ -1,3 +1,5 @@
+<img src="https://codeship.com/projects/d17a6c50-f8fa-0134-9e36-76184fa5b855/status?branch=master"/>
+
 # Solar-popup
 
 A lovely little vanilla TypeScript popup. 
@@ -23,6 +25,8 @@ function showSimplePopup() {
 
 showSimplePopup()
 ```
+
+You can also import the default styles solar-popup.css which will style it for you.
 
 ## Why
 
