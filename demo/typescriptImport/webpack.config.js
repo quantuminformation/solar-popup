@@ -19,10 +19,10 @@ module.exports = {
   },
   devtool: 'source-map',
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.ts$/,
-        loader: 'ts-loader'
+        loader: 'awesome-typescript-loader'
       },
       {
         test: /\.p?css$/,
@@ -41,9 +41,7 @@ module.exports = {
           }
         ]
       }
-
-    ],
-
+    ]
   },
   resolve: {
     // you can now require('file') instead of require('file.js')

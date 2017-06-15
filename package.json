@@ -15,7 +15,6 @@
     "build-prod": "webpack -p",
     "deploy": "npm run build && sh deploy.sh ",
     "watch": "webpack --watch --watch-poll ",
-    "prepublish": "webpack -p",
     "lint": "tslint 'src/**/*.ts' 'demo/src/**/*.ts'",
     "test": "npm run lint && karma start",
     "pass":"echo 'it passes'"

@@ -24,13 +24,7 @@ module.exports = {
     rules: [
       {
         test: /\.ts$/,
-        use: [{
-          //loader: 'ts-loader'
-          loader: 'awesome-typescript-loader'
-
-        }]
-        ,
-        exclude:new RegExp('.test.ts')
+        loader: 'awesome-typescript-loader',
       },
       {
         test: /\.p?css$/,
