@@ -13,16 +13,14 @@ module.exports = (config) => {
     },
 
     karmaTypescriptConfig: {
-      include: ["src/**/*.ts"]
+      include: ["src/**/*.ts"],
+      tsconfig: "./tsconfig.json"
     },
 
     reporters: ["progress", "karma-typescript"],
 
     browsers: ["Chrome"],
 
-    singleRun: false,
-    karmaTypescriptConfig: {
-      tsconfig: "./tsconfig.json"
-    }
+    singleRun: false
   });
 };
