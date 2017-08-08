@@ -1,14 +1,12 @@
 {
   "name": "solar-popup",
-  "version": "0.4.0",
+  "version": "0.4.2",
   "description": "",
   "main": "build/solar-popup.js",
-  "types": "build/src/SolarPopup.d.ts",
+  "types": "build/SolarPopup.d.ts",
   "files": [
     "demo/browserImport/index.html",
-    "build/solar-popup.js",
-    "build/solar-popup.css",
-    "build/src/"
+    "build"
   ],
   "scripts": {
     "build": "webpack",
