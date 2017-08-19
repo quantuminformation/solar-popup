@@ -1,5 +1,5 @@
 import { ModalBackground } from './ModalBackground'
-import { IComponent, KeyCodes } from 'vanilla-typescript'
+import { IComponent, KeyCodes, Dimensions } from 'vanilla-typescript'
 import './SolarPopup.pcss'
 import { constants } from './constants'
 
@@ -16,19 +16,9 @@ import { constants } from './constants'
 export default class SolarPopup implements IComponent {
   destroyBoundWithThis = this.destroy.bind(this)
   modalBackground = new ModalBackground()
-  private hostElement: HTMLElement
-  private child: HTMLElement
+  hostElement: HTMLElement
 
-  constructor (child: HTMLElement) {
-    this.child = child
-  }
-
-  /**
-   * Shows
-   * @param {Element} child we need to keep the reference to keep custom functionality in the child
-   */
-  show () {
-
+  constructor (child: HTMLElement, fixedDimensions?: Dimensions) {
     const tempElement: HTMLElement = document.createElement('DIV')
 
     tempElement.innerHTML =
@@ -36,20 +26,38 @@ export default class SolarPopup implements IComponent {
         <a class='close'><!--&#x274c-->&#x2716</a>
           <div class='childContainer'></div>
        </article>`
-    tempElement.querySelector('.childContainer').appendChild(this.child)
-
     this.hostElement = tempElement.firstChild as HTMLElement
+    this.hostElement.querySelector('.childContainer').appendChild(child)
+    if (fixedDimensions) {
+      this.hostElement.style.width = `${fixedDimensions.width}px`
+      this.hostElement.style.height = `${fixedDimensions.height}px`
+    }
+  }
+
+  /**
+   * Shows
+   * @param {Element} child we need to keep the reference to keep custom functionality in the child
+   */
+  show (): Promise<void> {
     document.body.appendChild(this.hostElement)
-    let currentWidth = window.getComputedStyle(document.querySelector('p'))
+    // let currentWidth = window.getComputedStyle(document.querySelector('p'))
 
     this.modalBackground.render()
 
-    setTimeout(() => {
-      // todo use dynamic width for better centering
-      // let currentWidth = window.getComputedStyle(document.querySelector('p')) }, 50)
-      this.hostElement.dataset['isInitialising'] = 'false'
+    return new Promise((resolve, reject) => {
+      // we need to set this in a timeout in order to trigger the css transition
+      setTimeout(() => {
+        this.hostElement.dataset['isInitialising'] = 'false'
+      })
+      // when the popup is has finished moving via the css transition resolve the promise to tell the callee
+      setTimeout(() => {
+        // todo use dynamic width for better centering
+        // let currentWidth = window.getComputedStyle(document.querySelector('p')) }, 50)
+
+        this.addListeners()
+        resolve()
+      }, constants.TRANSITION_TIMES)
     })
-    this.addListeners()
   }
 
   addListeners () {

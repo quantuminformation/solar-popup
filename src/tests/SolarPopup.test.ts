@@ -1,6 +1,6 @@
 /* global describe, it, beforeEach */
 import assert from 'assert'
-import { KeyCodes } from 'vanilla-typescript'
+import { KeyCodes, Dimensions } from 'vanilla-typescript'
 
 import SolarPopup from '../SolarPopup'
 
@@ -52,15 +52,26 @@ describe('Basic tests', () => {
       done()
     }, 300)
   })
+  it('Dimensions are applied correctly', (done) => {
+
+    let dim: Dimensions = { width: 100, height: 100 }
+    showSimplePopup(dim)
+    let el: HTMLElement = document.querySelector('.solar-popup') as HTMLElement
+
+    assert.equal(window.getComputedStyle(el).height, dim.height)
+    assert.equal(window.getComputedStyle(el).width, dim.width)
+
+    done()
+  })
 })
 
-function showSimplePopup () {
+function showSimplePopup (dimensions?: Dimensions) {
   let child = document.createElement('DIV')
   child.innerHTML =
     `<p>This is some content that can be supplied to the popup</p>
            <p>Also press the [ESC] key to close]</p>
            <button type="submit">Clicking a submit button will also close it</button>
         `
-  popup = new SolarPopup(child)
+  popup = dimensions ? new SolarPopup(child, dimensions) : new SolarPopup(child)
   popup.show()
 }
