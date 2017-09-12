@@ -1,8 +1,5 @@
 import SolarPopup from '../src/SolarPopup'
 
-import '../src/index.pcss'
-
-
 function showSimplePopup () {
   var child: HTMLElement = document.createElement('DIV')
   child.innerHTML =
