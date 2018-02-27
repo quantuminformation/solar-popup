@@ -1,7 +1,6 @@
 var path = require('path')
 var webpack = require('webpack')
 var WebpackBuildNotifierPlugin = require('webpack-build-notifier')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 const PATHS = {
   src: path.join(__dirname, './src'),
@@ -24,7 +23,7 @@ module.exports = {
     rules: [
       {
         test: /\.ts$/,
-        loader: 'awesome-typescript-loader',
+        loader: 'awesome-typescript-loader'
       },
       {
         test: /\.p?css$/,
@@ -43,7 +42,7 @@ module.exports = {
           }
         ]
       }
-    ],
+    ]
   },
   resolve: {
     // you can now require('file') instead of require('file.js')
@@ -53,6 +52,6 @@ module.exports = {
     new WebpackBuildNotifierPlugin({
       title: 'My Project Webpack Build'
     }),
-``    new webpack.IgnorePlugin(/test\.ts$/)
+    new webpack.IgnorePlugin(/test\.ts$/)
   ]
 }
