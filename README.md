@@ -1,4 +1,6 @@
+<!---
 <img src="https://codeship.com/projects/d17a6c50-f8fa-0134-9e36-76184fa5b855/status?branch=master"/>
+--->
 
 # Solar-popup
 

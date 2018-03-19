@@ -31,8 +31,12 @@ export default class SolarPopup implements IComponent {
     this.hostElement = tempElement.firstChild as HTMLElement
     this.hostElement.querySelector('.childContainer').appendChild(child)
     if (fixedDimensions) {
-      this.hostElement.style.width = `${fixedDimensions.width}px`
-      this.hostElement.style.height = `${fixedDimensions.height}px`
+      if (window.innerWidth > 2 * 10 + fixedDimensions.width) {
+        this.hostElement.style.width = `${fixedDimensions.width}px`
+      }
+      if (window.innerHeight > 2 * 10 + fixedDimensions.height) {
+        this.hostElement.style.height = `${fixedDimensions.height}px`
+      }
     }
   }
 
