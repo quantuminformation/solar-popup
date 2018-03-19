@@ -1,5 +1,5 @@
 import { ModalBackground } from './ModalBackground'
-import { IComponent, KeyCodes, Dimensions } from 'vanilla-typescript'
+import { IComponent, KeyCodes, OptionalDimensions } from 'vanilla-typescript'
 import './SolarPopup.pcss'
 import { constants } from './constants'
 
@@ -11,6 +11,8 @@ import { constants } from './constants'
  * Adds modal background that fades in with CSS3 transitions
  * Popup itself slides in with CSS3 transitions
  *
+ * If you specify fixed Dimensions then it will explicitly set the width and height optionally
+ *
  * @constructor
  */
 export default class SolarPopup implements IComponent {
@@ -18,7 +20,7 @@ export default class SolarPopup implements IComponent {
   modalBackground = new ModalBackground()
   hostElement: HTMLElement
 
-  constructor (child: HTMLElement, fixedDimensions?: Dimensions) {
+  constructor (child: HTMLElement, fixedDimensions?: OptionalDimensions) {
     const tempElement: HTMLElement = document.createElement('DIV')
 
     tempElement.innerHTML =

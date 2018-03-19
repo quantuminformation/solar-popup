@@ -1,4 +1,5 @@
 import SolarPopup from '../src/SolarPopup'
+import { OptionalDimensions } from 'vanilla-typescript'
 
 function showSimplePopup () {
   var child: HTMLElement = document.createElement('DIV')
@@ -30,7 +31,9 @@ function showBigPopup () {
       </div>
     </form>
   `
-  var popup = new SolarPopup(child)
+
+  let dim: OptionalDimensions = { "width": 400, height: 500 }
+  var popup = new SolarPopup(child, dim)
   popup.show()
 }
 
