@@ -30,14 +30,23 @@ export default class SolarPopup implements IComponent {
        </article>`
     this.hostElement = tempElement.firstChild as HTMLElement
     this.hostElement.querySelector('.childContainer').appendChild(child)
+
+    var htmlStyles = window.getComputedStyle(document.querySelector("html"));
+    var myColor = htmlStyles.getPropertyValue("--popup-width"); // returns "#f00"
+
     if (fixedDimensions) {
       if (window.innerWidth > 2 * 10 + fixedDimensions.width) {
-        this.hostElement.style.width = `${fixedDimensions.width}px`
+        document.documentElement.style.setProperty('--popup-width', fixedDimensions.width + 'px')
       }
       if (window.innerHeight > 2 * 10 + fixedDimensions.height) {
+        // todo adjust for small height
         this.hostElement.style.height = `${fixedDimensions.height}px`
       }
     }
+
+
+    var htmlStyles = window.getComputedStyle(document.querySelector("html"));
+    var myColor = htmlStyles.getPropertyValue("--popup-width"); // returns "#f00"
   }
 
   /**
@@ -62,8 +71,11 @@ export default class SolarPopup implements IComponent {
 
         this.addListeners()
         resolve()
+        var htmlStyles = window.getComputedStyle(document.querySelector("html"));
+        var myColor = htmlStyles.getPropertyValue("--popup-width"); // returns "#f00"
       }, constants.TRANSITION_TIMES)
     })
+
   }
 
   addListeners () {

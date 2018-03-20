@@ -1,6 +1,6 @@
 {
   "name": "solar-popup",
-  "version": "0.4.6",
+  "version": "0.4.8",
   "description": "",
   "main": "build/solar-popup.js",
   "types": "build/SolarPopup.d.ts",
@@ -45,8 +45,8 @@
     "karma-typescript": "github:monounity/karma-typescript",
     "mocha": "^3.5.3",
     "postcss-calc": "^6.0.1",
-    "postcss-css-variables": "^0.8.0",
     "postcss-custom-media": "^6.0.0",
+    "postcss-custom-properties": "^7.0.0",
     "postcss-import": "^10.0.0",
     "postcss-loader": "^2.1.2",
     "postcss-nested": "^2.0.2",
@@ -58,5 +58,9 @@
     "vanilla-typescript": "^0.4.10",
     "webpack": "^3.11.0",
     "webpack-build-notifier": "^0.1.23"
-  }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
 }
