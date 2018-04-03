@@ -1,6 +1,7 @@
 import { ModalBackground } from './ModalBackground';
 import { IComponent, OptionalDimensions } from 'vanilla-typescript';
 import './SolarPopup.pcss';
+export { OptionalDimensions } from 'vanilla-typescript';
 /**
  * A Popup that can take any content
  *
