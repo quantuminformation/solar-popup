@@ -5,18 +5,17 @@
   bottom: 0;
   left: 0;
   position: fixed;
-  z-index: 1;
+  z-index: 9999;
   background: rgb(0, 0, 0);
   opacity: 0.5;
   transition: all 300ms ease;
 
-
 }
 
 [data-is-initialising="true"] {
-   opacity: 0;
- }
+  opacity: 0;
+}
 
 [data-is-destructing="true"] {
-   opacity: 0;
- }
+  opacity: 0;
+}

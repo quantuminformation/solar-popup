@@ -1,4 +1,4 @@
-import SolarPopup from '../src/SolarPopup'
+import {SolarPopup} from '../src'
 import { OptionalDimensions } from 'vanilla-typescript'
 
 function showSimplePopup () {

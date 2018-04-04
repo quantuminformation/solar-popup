@@ -2,7 +2,7 @@
 import assert from 'assert'
 import { KeyCodes, Dimensions } from 'vanilla-typescript'
 
-import SolarPopup from '../SolarPopup'
+import { SolarPopup } from '../'
 
 let popup: SolarPopup
 

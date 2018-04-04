@@ -10,7 +10,7 @@ const PATHS = {
 module.exports = {
   mode: 'development',
   entry: {
-    'solar-popup': PATHS.src + '/SolarPopup.ts'
+    'solar-popup': PATHS.src + '/index.ts'
   },
   output: {
     path: PATHS.build,

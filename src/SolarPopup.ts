@@ -5,8 +5,6 @@ import { constants } from './constants'
 
 // re-export stuff //todo maybe a better way to do this
 
-export {OptionalDimensions } from 'vanilla-typescript'
-
 /**
  * A Popup that can take any content
  *
@@ -19,12 +17,12 @@ export {OptionalDimensions } from 'vanilla-typescript'
  *
  * @constructor
  */
-export default class SolarPopup implements IComponent {
+export class SolarPopup implements IComponent {
   destroyBoundWithThis = this.destroy.bind(this)
   modalBackground = new ModalBackground()
   hostElement: HTMLElement
 
-  constructor (child: HTMLElement, fixedDimensions?: OptionalDimensions) {
+  constructor (child: HTMLElement, optionalDimensions?: OptionalDimensions) {
     const tempElement: HTMLElement = document.createElement('DIV')
 
     tempElement.innerHTML =
@@ -35,22 +33,21 @@ export default class SolarPopup implements IComponent {
     this.hostElement = tempElement.firstChild as HTMLElement
     this.hostElement.querySelector('.childContainer').appendChild(child)
 
-    var htmlStyles = window.getComputedStyle(document.querySelector("html"));
-    var myColor = htmlStyles.getPropertyValue("--popup-width"); // returns "#f00"
+    var htmlStyles = window.getComputedStyle(document.querySelector("html"))
+    var myColor = htmlStyles.getPropertyValue("--popup-width") // returns "#f00"
 
-    if (fixedDimensions) {
-      if (window.innerWidth > 2 * 10 + fixedDimensions.width) {
-        document.documentElement.style.setProperty('--popup-width', fixedDimensions.width + 'px')
+    if (optionalDimensions) {
+      if (window.innerWidth > 2 * 10 + optionalDimensions.width) {
+        document.documentElement.style.setProperty('--popup-width', optionalDimensions.width + 'px')
       }
-      if (window.innerHeight > 2 * 10 + fixedDimensions.height) {
+      if (window.innerHeight > 2 * 10 + optionalDimensions.height) {
         // todo adjust for small height
-        this.hostElement.style.height = `${fixedDimensions.height}px`
+        this.hostElement.style.height = `${optionalDimensions.height}px`
       }
     }
 
-
-    var htmlStyles = window.getComputedStyle(document.querySelector("html"));
-    var myColor = htmlStyles.getPropertyValue("--popup-width"); // returns "#f00"
+    var htmlStyles = window.getComputedStyle(document.querySelector("html"))
+    var myColor = htmlStyles.getPropertyValue("--popup-width") // returns "#f00"
   }
 
   /**
@@ -75,8 +72,8 @@ export default class SolarPopup implements IComponent {
 
         this.addListeners()
         resolve()
-        var htmlStyles = window.getComputedStyle(document.querySelector("html"));
-        var myColor = htmlStyles.getPropertyValue("--popup-width"); // returns "#f00"
+        var htmlStyles = window.getComputedStyle(document.querySelector("html"))
+        var myColor = htmlStyles.getPropertyValue("--popup-width") // returns "#f00"
       }, constants.TRANSITION_TIMES)
     })
 

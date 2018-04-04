@@ -1,4 +1,4 @@
-import SolarPopup from '../../src/SolarPopup'
+import {SolarPopup} from '../../src'
 
 import '../../src/index.pcss'
 
