@@ -1,4 +1,4 @@
-import './ModalBackground.pcss';
+import "./ModalBackground.pcss";
 export declare class ModalBackground {
     private destroyBoundWithThis;
     private hostElement;

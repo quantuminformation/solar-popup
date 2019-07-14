@@ -1,12 +1,10 @@
-import {SolarPopup} from '../../src'
+import { SolarPopup } from "../../src"
 
-import '../../src/index.pcss'
-
+import "../../src/index.pcss"
 
 function showSimplePopup() {
-  var child = document.createElement('DIV')
-  child.innerHTML =
-    `<p>This is some content that can be supplied to the popup</p>
+  var child = document.createElement("DIV")
+  child.innerHTML = `<p>This is some content that can be supplied to the popup</p>
            <p>Also press the [ESC] key to close]</p>
            <button type="submit">Clicking a submit button will also close it</button>
         `
@@ -15,9 +13,8 @@ function showSimplePopup() {
 }
 
 function showBigPopup() {
-  var child = document.createElement('DIV')
-  child.innerHTML =
-    `<form>
+  var child = document.createElement("DIV")
+  child.innerHTML = `<form>
               <h3>Some amazing form</h3>
               <p>The submit won't fire until all the fields are valid</p>
               <div class="form-group">

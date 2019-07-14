@@ -1,6 +1,6 @@
 {
   "name": "solar-popup",
-  "version": "0.4.13",
+  "version": "0.4.14",
   "description": "",
   "main": "build/solar-popup.js",
   "types": "build/SolarPopup.d.ts",
@@ -13,8 +13,7 @@
     "build-prod": "webpack -p",
     "deploy": "npm run build && sh deploy.sh ",
     "watch": "webpack --watch --watch-poll ",
-    "lint": "tslint 'src/**/*.ts' 'demo/src/**/*.ts'",
-    "test": "npm run lint && karma start",
+    "test": "karma start",
     "pass": "echo 'it passes'"
   },
   "pre-commit": "pass",
@@ -51,6 +50,7 @@
     "postcss-loader": "^3.0.0",
     "postcss-nested": "^4.1.2",
     "pre-commit": "^1.2.2",
+    "prettier": "^1.18.2",
     "style-loader": "^0.23.1",
     "tslint": "^5.18.0",
     "tslint-config-standard": "^8.0.1",

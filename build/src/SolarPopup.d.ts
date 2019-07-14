@@ -1,7 +1,6 @@
-import { ModalBackground } from './ModalBackground';
-import { IComponent, OptionalDimensions } from 'vanilla-typescript';
-import './SolarPopup.pcss';
-export { OptionalDimensions } from 'vanilla-typescript';
+import { ModalBackground } from "./ModalBackground";
+import { IComponent, OptionalDimensions } from "vanilla-typescript";
+import "./SolarPopup.pcss";
 /**
  * A Popup that can take any content
  *
@@ -14,11 +13,11 @@ export { OptionalDimensions } from 'vanilla-typescript';
  *
  * @constructor
  */
-export default class SolarPopup implements IComponent {
+export declare class SolarPopup implements IComponent {
     destroyBoundWithThis: any;
     modalBackground: ModalBackground;
     hostElement: HTMLElement;
-    constructor(child: HTMLElement, fixedDimensions?: OptionalDimensions);
+    constructor(child: HTMLElement, optionalDimensions?: OptionalDimensions);
     /**
      * Shows
      * @param {Element} child we need to keep the reference to keep custom functionality in the child

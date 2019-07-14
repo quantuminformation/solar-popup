@@ -1,10 +1,9 @@
-import {SolarPopup} from '../src'
-import { OptionalDimensions } from 'vanilla-typescript'
+import { SolarPopup } from "../src"
+import { OptionalDimensions } from "vanilla-typescript"
 
-function showSimplePopup () {
-  var child: HTMLElement = document.createElement('DIV')
-  child.innerHTML =
-    `<p>This is some content that can be supplied to the popup</p>
+function showSimplePopup() {
+  var child: HTMLElement = document.createElement("DIV")
+  child.innerHTML = `<p>This is some content that can be supplied to the popup</p>
            <p>Also press the [ESC] key to close]</p>
            <button type="submit">Clicking a submit button will also close it</button>
         `
@@ -12,11 +11,10 @@ function showSimplePopup () {
   popup.show()
 }
 
-function showBigPopup () {
-  var child = document.createElement('DIV')
+function showBigPopup() {
+  var child = document.createElement("DIV")
   // language=HTML
-  child.innerHTML =
-      `
+  child.innerHTML = `
     <form>
       <h3>Some amazing form</h3>
       <p>The submit won't fire until all the fields are valid</p>
@@ -32,16 +30,16 @@ function showBigPopup () {
     </form>
   `
 
-  let dim: OptionalDimensions = { "width": 400, height: 500 }
+  let dim: OptionalDimensions = { width: 400, height: 500 }
   var popup = new SolarPopup(child, dim)
   popup.show()
 }
 
 //showBigPopup()
 
-(document.querySelector('#showSimple') as HTMLElement).onclick = (e: MouseEvent) => {
+;(document.querySelector("#showSimple") as HTMLElement).onclick = (e: MouseEvent) => {
   showSimplePopup()
 }
-(document.querySelector('#showBig') as HTMLElement).onclick = (e: MouseEvent) => {
+;(document.querySelector("#showBig") as HTMLElement).onclick = (e: MouseEvent) => {
   showBigPopup()
 }

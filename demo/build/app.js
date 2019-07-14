@@ -36,17 +36,32 @@
 /******/ 	// define getter function for harmony exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
 /******/ 		if(!__webpack_require__.o(exports, name)) {
-/******/ 			Object.defineProperty(exports, name, {
-/******/ 				configurable: false,
-/******/ 				enumerable: true,
-/******/ 				get: getter
-/******/ 			});
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
 /******/ 		}
 /******/ 	};
 /******/
 /******/ 	// define __esModule on exports
 /******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
 /******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
 /******/ 	};
 /******/
 /******/ 	// getDefaultExport function for compatibility with non-harmony modules
@@ -216,7 +231,7 @@ function getFormValues(form) {
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../demo/node_modules/css-loader??ref--5-1!../node_modules/postcss-loader/lib!./ModalBackground.pcss */ "./node_modules/css-loader/index.js??ref--5-1!../node_modules/postcss-loader/lib/index.js!../src/ModalBackground.pcss");
+var content = __webpack_require__(/*! !../demo/node_modules/css-loader/dist/cjs.js??ref--5-1!../node_modules/postcss-loader/src!./ModalBackground.pcss */ "./node_modules/css-loader/dist/cjs.js?!../node_modules/postcss-loader/src/index.js!../src/ModalBackground.pcss");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -255,24 +270,24 @@ __webpack_require__.r(__webpack_exports__);
 
 class ModalBackground {
     constructor() {
-        // tslint:disable-line
         this.destroyBoundWithThis = this.destroy.bind(this);
+        // tslint:disable-line
     }
     /**
      * Shows
      * @param {Element} child we need to keep the reference to keep custom functionality in the child
      */
     render() {
-        this.hostElement = document.createElement('DIV');
-        this.hostElement.className = 'modal-background';
-        this.hostElement.dataset['isInitialising'] = 'true';
+        this.hostElement = document.createElement("DIV");
+        this.hostElement.className = "modal-background";
+        this.hostElement.dataset["isInitialising"] = "true";
         document.body.appendChild(this.hostElement);
         setTimeout(() => {
-            this.hostElement.dataset['isInitialising'] = 'false';
+            this.hostElement.dataset["isInitialising"] = "false";
         }, 0); // to force style re show
     }
     destroy() {
-        this.hostElement.dataset['isDestructing'] = 'true';
+        this.hostElement.dataset["isDestructing"] = "true";
         setTimeout(() => {
             this.hostElement.parentElement.removeChild(this.hostElement);
         }, _constants__WEBPACK_IMPORTED_MODULE_0__["constants"].TRANSITION_TIMES);
@@ -290,7 +305,7 @@ class ModalBackground {
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../demo/node_modules/css-loader??ref--5-1!../node_modules/postcss-loader/lib!./SolarPopup.pcss */ "./node_modules/css-loader/index.js??ref--5-1!../node_modules/postcss-loader/lib/index.js!../src/SolarPopup.pcss");
+var content = __webpack_require__(/*! !../demo/node_modules/css-loader/dist/cjs.js??ref--5-1!../node_modules/postcss-loader/src!./SolarPopup.pcss */ "./node_modules/css-loader/dist/cjs.js?!../node_modules/postcss-loader/src/index.js!../src/SolarPopup.pcss");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -316,12 +331,12 @@ if(false) {}
 /*!****************************!*\
   !*** ../src/SolarPopup.ts ***!
   \****************************/
-/*! exports provided: default */
+/*! exports provided: SolarPopup */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return SolarPopup; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SolarPopup", function() { return SolarPopup; });
 /* harmony import */ var _ModalBackground__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ModalBackground */ "../src/ModalBackground.ts");
 /* harmony import */ var vanilla_typescript__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vanilla-typescript */ "../node_modules/vanilla-typescript/index.ts");
 /* harmony import */ var _SolarPopup_pcss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SolarPopup.pcss */ "../src/SolarPopup.pcss");
@@ -331,6 +346,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+// re-export stuff //todo maybe a better way to do this
 /**
  * A Popup that can take any content
  *
@@ -344,26 +360,25 @@ __webpack_require__.r(__webpack_exports__);
  * @constructor
  */
 class SolarPopup {
-    constructor(child, fixedDimensions) {
+    constructor(child, optionalDimensions) {
         this.destroyBoundWithThis = this.destroy.bind(this);
         this.modalBackground = new _ModalBackground__WEBPACK_IMPORTED_MODULE_0__["ModalBackground"]();
-        const tempElement = document.createElement('DIV');
-        tempElement.innerHTML =
-            `<article class='solar-popup' data-is-initialising='true'>
+        const tempElement = document.createElement("DIV");
+        tempElement.innerHTML = `<article class='solar-popup' data-is-initialising='true'>
         <a class='close'><!--&#x274c-->&#x2716</a>
           <div class='childContainer'></div>
        </article>`;
         this.hostElement = tempElement.firstChild;
-        this.hostElement.querySelector('.childContainer').appendChild(child);
+        this.hostElement.querySelector(".childContainer").appendChild(child);
         var htmlStyles = window.getComputedStyle(document.querySelector("html"));
         var myColor = htmlStyles.getPropertyValue("--popup-width"); // returns "#f00"
-        if (fixedDimensions) {
-            if (window.innerWidth > 2 * 10 + fixedDimensions.width) {
-                document.documentElement.style.setProperty('--popup-width', fixedDimensions.width + 'px');
+        if (optionalDimensions) {
+            if (window.innerWidth > 2 * 10 + optionalDimensions.width) {
+                document.documentElement.style.setProperty("--popup-width", optionalDimensions.width + "px");
             }
-            if (window.innerHeight > 2 * 10 + fixedDimensions.height) {
+            if (window.innerHeight > 2 * 10 + optionalDimensions.height) {
                 // todo adjust for small height
-                this.hostElement.style.height = `${fixedDimensions.height}px`;
+                this.hostElement.style.height = `${optionalDimensions.height}px`;
             }
         }
         var htmlStyles = window.getComputedStyle(document.querySelector("html"));
@@ -380,7 +395,7 @@ class SolarPopup {
         return new Promise((resolve, reject) => {
             // we need to set this in a timeout in order to trigger the css transition
             setTimeout(() => {
-                this.hostElement.dataset['isInitialising'] = 'false';
+                this.hostElement.dataset["isInitialising"] = "false";
             });
             // when the popup is has finished moving via the css transition resolve the promise to tell the callee
             setTimeout(() => {
@@ -394,15 +409,15 @@ class SolarPopup {
         });
     }
     addListeners() {
-        const closeElement = this.hostElement.querySelector('a');
-        closeElement.addEventListener('click', this.destroyBoundWithThis);
-        this.hostElement.classList.remove('offscreen');
-        document.addEventListener('keyup', function (event) {
+        const closeElement = this.hostElement.querySelector("a");
+        closeElement.addEventListener("click", this.destroyBoundWithThis);
+        this.hostElement.classList.remove("offscreen");
+        document.addEventListener("keyup", function (event) {
             if (event.keyCode === vanilla_typescript__WEBPACK_IMPORTED_MODULE_1__["KeyCodes"].ESC) {
                 this.destroyBoundWithThis();
             }
         }.bind(this));
-        this.hostElement.addEventListener('submit', function (event) {
+        this.hostElement.addEventListener("submit", function (event) {
             this.destroyBoundWithThis();
             event.preventDefault();
         }.bind(this));
@@ -410,14 +425,14 @@ class SolarPopup {
         // this is a convention that gets popup to behave in sensible way
         const submitBtn = this.hostElement.querySelector('button[type="submit"]');
         if (submitBtn) {
-            submitBtn.addEventListener('click', this.destroyBoundWithThis);
+            submitBtn.addEventListener("click", this.destroyBoundWithThis);
         }
     }
     destroy() {
         // visual indicator for this element and delegate to the modal
-        this.hostElement.dataset['isDestructing'] = 'true';
+        this.hostElement.dataset["isDestructing"] = "true";
         this.modalBackground.destroy();
-        return new Promise((resolve) => {
+        return new Promise(resolve => {
             setTimeout(() => {
                 this.hostElement.parentElement.removeChild(this.hostElement);
                 resolve();
@@ -477,6 +492,23 @@ const constants = {
 
 /***/ }),
 
+/***/ "../src/index.ts":
+/*!***********************!*\
+  !*** ../src/index.ts ***!
+  \***********************/
+/*! exports provided: SolarPopup */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _SolarPopup__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SolarPopup */ "../src/SolarPopup.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SolarPopup", function() { return _SolarPopup__WEBPACK_IMPORTED_MODULE_0__["SolarPopup"]; });
+
+
+
+
+/***/ }),
+
 /***/ "./index.ts":
 /*!******************!*\
   !*** ./index.ts ***!
@@ -486,23 +518,21 @@ const constants = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _src_SolarPopup__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../src/SolarPopup */ "../src/SolarPopup.ts");
+/* harmony import */ var _src__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../src */ "../src/index.ts");
 
 function showSimplePopup() {
-    var child = document.createElement('DIV');
-    child.innerHTML =
-        `<p>This is some content that can be supplied to the popup</p>
+    var child = document.createElement("DIV");
+    child.innerHTML = `<p>This is some content that can be supplied to the popup</p>
            <p>Also press the [ESC] key to close]</p>
            <button type="submit">Clicking a submit button will also close it</button>
         `;
-    var popup = new _src_SolarPopup__WEBPACK_IMPORTED_MODULE_0__["default"](child);
+    var popup = new _src__WEBPACK_IMPORTED_MODULE_0__["SolarPopup"](child);
     popup.show();
 }
 function showBigPopup() {
-    var child = document.createElement('DIV');
+    var child = document.createElement("DIV");
     // language=HTML
-    child.innerHTML =
-        `
+    child.innerHTML = `
     <form>
       <h3>Some amazing form</h3>
       <p>The submit won't fire until all the fields are valid</p>
@@ -517,143 +547,148 @@ function showBigPopup() {
       </div>
     </form>
   `;
-    let dim = { "width": 400, height: 500 };
-    var popup = new _src_SolarPopup__WEBPACK_IMPORTED_MODULE_0__["default"](child, dim);
+    let dim = { width: 400, height: 500 };
+    var popup = new _src__WEBPACK_IMPORTED_MODULE_0__["SolarPopup"](child, dim);
     popup.show();
 }
 //showBigPopup()
-document.querySelector('#showSimple').onclick = (e) => {
+;
+document.querySelector("#showSimple").onclick = (e) => {
     showSimplePopup();
 };
-document.querySelector('#showBig').onclick = (e) => {
+document.querySelector("#showBig").onclick = (e) => {
     showBigPopup();
 };
 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js??ref--5-1!../node_modules/postcss-loader/lib/index.js!../src/ModalBackground.pcss":
-/*!**********************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--5-1!../node_modules/postcss-loader/lib!../src/ModalBackground.pcss ***!
-  \**********************************************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js?!../node_modules/postcss-loader/src/index.js!../src/ModalBackground.pcss":
+/*!**********************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ref--5-1!../node_modules/postcss-loader/src!../src/ModalBackground.pcss ***!
+  \**********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(/*! ../demo/node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n.modal-background {\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  position: fixed;\n  z-index: 1;\n  background: rgb(0, 0, 0);\n  opacity: 0.5;\n  transition: all 300ms ease;\n\n\n}\n\n[data-is-initialising=\"true\"] {\n   opacity: 0;\n }\n\n[data-is-destructing=\"true\"] {\n   opacity: 0;\n }\n", ""]);
-
-// exports
+exports = module.exports = __webpack_require__(/*! ../demo/node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
+// Module
+exports.push([module.i, ".modal-background {\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  position: fixed;\n  z-index: 9999;\n  background: rgb(0, 0, 0);\n  opacity: 0.5;\n  transition: all 300ms ease;\n}\n\n[data-is-initialising=\"true\"] {\n  opacity: 0;\n}\n\n[data-is-destructing=\"true\"] {\n  opacity: 0;\n}\n", ""]);
 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js??ref--5-1!../node_modules/postcss-loader/lib/index.js!../src/SolarPopup.pcss":
-/*!*****************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--5-1!../node_modules/postcss-loader/lib!../src/SolarPopup.pcss ***!
-  \*****************************************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js?!../node_modules/postcss-loader/src/index.js!../src/SolarPopup.pcss":
+/*!*****************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ref--5-1!../node_modules/postcss-loader/src!../src/SolarPopup.pcss ***!
+  \*****************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(/*! ../demo/node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "/* mobile first styles */\n\n/*\nbased on https://github.com/cssrecipes/custom-media-queries/blob/master/index.css\n */\n\n:root {\n  /*dark theme*/\n  --background: #06071a;\n  --border: #04bbff;\n  --color: #fff;\n  --form-padding: 50px;\n  --popup-width: 250px;\n}\n\n.solar-popup {\n  position: fixed;\n  z-index: 1000;\n  padding: 10px;\n  width: 250px;\n  width: var(--popup-width);\n  top: 10px;\n  box-sizing: border-box;\n  color: #fff;\n  color: var(--color);\n  transition: all 300ms ease;\n  background-color: #06071a;\n  background-color: var(--background);\n  border: 1px solid #04bbff;\n  border: 1px solid var(--border);\n  border-radius: 5px;\n  left: calc(50% - (250px / 2));\n  left: calc(50% - (var(--popup-width) / 2));\n}\n\n.solar-popup h1,.solar-popup h2,.solar-popup h3{\n    color: aqua;\n  }\n\n.solar-popup[data-is-initialising=\"true\"] {\n    /*todo cater for bigger screens*/\n    left: calc(250px * -1) !important;\n    left: calc(var(--popup-width) * -1) !important;\n  }\n\n.solar-popup[data-is-destructing=\"true\"] {\n    /*todo cater for bigger screens*/\n    left: 100%;\n  }\n\n@media (min-width: 576px) {\n\n.solar-popup {\n    top: 20%\n}\n  }\n\n.solar-popup .close {\n    cursor: pointer;\n    position: absolute;\n    right: 10px;\n    top: 5px;\n    font-size: 16px;\n    padding: 2px;\n  }\n", ""]);
-
-// exports
+exports = module.exports = __webpack_require__(/*! ../demo/node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
+// Module
+exports.push([module.i, "/* mobile first styles */\n/*\nGood starting point for css framework agnostic breakpoints */\n:root {\n  /*dark theme*/\n  --background: #06071a;\n  --border: #04bbff;\n  --color: #fff;\n  --form-padding: 50px;\n  --popup-width: 250px;\n}\n.solar-popup {\n  position: fixed;\n  z-index: 10000;\n  padding: 10px;\n  width: 250px;\n  width: var(--popup-width);\n  top: 10px;\n  box-sizing: border-box;\n  color: #fff;\n  color: var(--color);\n  transition: all 300ms ease;\n  background-color: #06071a;\n  background-color: var(--background);\n  border: 1px solid #04bbff;\n  border: 1px solid var(--border);\n  border-radius: 5px;\n  left: calc(50% - (250px / 2));\n  left: calc(50% - (var(--popup-width) / 2));\n}\n.solar-popup h1,\n  .solar-popup h2,\n  .solar-popup h3 {\n    color: aqua;\n  }\n.solar-popup[data-is-initialising=\"true\"] {\n    /*todo cater for bigger screens*/\n    left: calc(250px * -1) !important;\n    left: calc(var(--popup-width) * -1) !important;\n  }\n.solar-popup[data-is-destructing=\"true\"] {\n    /*todo cater for bigger screens*/\n    left: 100%;\n  }\n@media (min-width: 576px) {\n.solar-popup {\n    top: 20%\n}\n  }\n.solar-popup .close {\n    cursor: pointer;\n    position: absolute;\n    right: 10px;\n    top: 5px;\n    font-size: 16px;\n    padding: 2px;\n  }\n", ""]);
 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/lib/css-base.js":
-/*!*************************************************!*\
-  !*** ./node_modules/css-loader/lib/css-base.js ***!
-  \*************************************************/
+/***/ "./node_modules/css-loader/dist/runtime/api.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/css-loader/dist/runtime/api.js ***!
+  \*****************************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
 
 /*
-	MIT License http://www.opensource.org/licenses/mit-license.php
-	Author Tobias Koppers @sokra
+  MIT License http://www.opensource.org/licenses/mit-license.php
+  Author Tobias Koppers @sokra
 */
 // css base code, injected by the css-loader
-module.exports = function(useSourceMap) {
-	var list = [];
+// eslint-disable-next-line func-names
+module.exports = function (useSourceMap) {
+  var list = []; // return the list of modules as css string
 
-	// return the list of modules as css string
-	list.toString = function toString() {
-		return this.map(function (item) {
-			var content = cssWithMappingToString(item, useSourceMap);
-			if(item[2]) {
-				return "@media " + item[2] + "{" + content + "}";
-			} else {
-				return content;
-			}
-		}).join("");
-	};
+  list.toString = function toString() {
+    return this.map(function (item) {
+      var content = cssWithMappingToString(item, useSourceMap);
 
-	// import a list of modules into the list
-	list.i = function(modules, mediaQuery) {
-		if(typeof modules === "string")
-			modules = [[null, modules, ""]];
-		var alreadyImportedModules = {};
-		for(var i = 0; i < this.length; i++) {
-			var id = this[i][0];
-			if(typeof id === "number")
-				alreadyImportedModules[id] = true;
-		}
-		for(i = 0; i < modules.length; i++) {
-			var item = modules[i];
-			// skip already imported module
-			// this implementation is not 100% perfect for weird media query combinations
-			//  when a module is imported multiple times with different media queries.
-			//  I hope this will never occur (Hey this way we have smaller bundles)
-			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-				if(mediaQuery && !item[2]) {
-					item[2] = mediaQuery;
-				} else if(mediaQuery) {
-					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-				}
-				list.push(item);
-			}
-		}
-	};
-	return list;
+      if (item[2]) {
+        return "@media ".concat(item[2], "{").concat(content, "}");
+      }
+
+      return content;
+    }).join('');
+  }; // import a list of modules into the list
+  // eslint-disable-next-line func-names
+
+
+  list.i = function (modules, mediaQuery) {
+    if (typeof modules === 'string') {
+      // eslint-disable-next-line no-param-reassign
+      modules = [[null, modules, '']];
+    }
+
+    var alreadyImportedModules = {};
+
+    for (var i = 0; i < this.length; i++) {
+      // eslint-disable-next-line prefer-destructuring
+      var id = this[i][0];
+
+      if (id != null) {
+        alreadyImportedModules[id] = true;
+      }
+    }
+
+    for (var _i = 0; _i < modules.length; _i++) {
+      var item = modules[_i]; // skip already imported module
+      // this implementation is not 100% perfect for weird media query combinations
+      // when a module is imported multiple times with different media queries.
+      // I hope this will never occur (Hey this way we have smaller bundles)
+
+      if (item[0] == null || !alreadyImportedModules[item[0]]) {
+        if (mediaQuery && !item[2]) {
+          item[2] = mediaQuery;
+        } else if (mediaQuery) {
+          item[2] = "(".concat(item[2], ") and (").concat(mediaQuery, ")");
+        }
+
+        list.push(item);
+      }
+    }
+  };
+
+  return list;
 };
 
 function cssWithMappingToString(item, useSourceMap) {
-	var content = item[1] || '';
-	var cssMapping = item[3];
-	if (!cssMapping) {
-		return content;
-	}
+  var content = item[1] || ''; // eslint-disable-next-line prefer-destructuring
 
-	if (useSourceMap && typeof btoa === 'function') {
-		var sourceMapping = toComment(cssMapping);
-		var sourceURLs = cssMapping.sources.map(function (source) {
-			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
-		});
+  var cssMapping = item[3];
 
-		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
-	}
+  if (!cssMapping) {
+    return content;
+  }
 
-	return [content].join('\n');
-}
+  if (useSourceMap && typeof btoa === 'function') {
+    var sourceMapping = toComment(cssMapping);
+    var sourceURLs = cssMapping.sources.map(function (source) {
+      return "/*# sourceURL=".concat(cssMapping.sourceRoot).concat(source, " */");
+    });
+    return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
+  }
 
-// Adapted from convert-source-map (MIT)
+  return [content].join('\n');
+} // Adapted from convert-source-map (MIT)
+
+
 function toComment(sourceMap) {
-	// eslint-disable-next-line no-undef
-	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
-	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
-
-	return '/*# ' + data + ' */';
+  // eslint-disable-next-line no-undef
+  var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
+  var data = "sourceMappingURL=data:application/json;charset=utf-8;base64,".concat(base64);
+  return "/*# ".concat(data, " */");
 }
-
 
 /***/ }),
 
@@ -689,14 +724,17 @@ var isOldIE = memoize(function () {
 	return window && document && document.all && !window.atob;
 });
 
-var getTarget = function (target) {
+var getTarget = function (target, parent) {
+  if (parent){
+    return parent.querySelector(target);
+  }
   return document.querySelector(target);
 };
 
 var getElement = (function (fn) {
 	var memo = {};
 
-	return function(target) {
+	return function(target, parent) {
                 // If passing function in options, then use it for resolve "head" element.
                 // Useful for Shadow Root style i.e
                 // {
@@ -706,7 +744,7 @@ var getElement = (function (fn) {
                         return target();
                 }
                 if (typeof memo[target] === "undefined") {
-			var styleTarget = getTarget.call(this, target);
+			var styleTarget = getTarget.call(this, target, parent);
 			// Special case to return head of iframe instead of iframe itself
 			if (window.HTMLIFrameElement && styleTarget instanceof window.HTMLIFrameElement) {
 				try {
@@ -847,7 +885,7 @@ function insertStyleElement (options, style) {
 	} else if (options.insertAt === "bottom") {
 		target.appendChild(style);
 	} else if (typeof options.insertAt === "object" && options.insertAt.before) {
-		var nextSibling = getElement(options.insertInto + " " + options.insertAt.before);
+		var nextSibling = getElement(options.insertAt.before, target);
 		target.insertBefore(style, nextSibling);
 	} else {
 		throw new Error("[Style Loader]\n\n Invalid value for parameter 'insertAt' ('options.insertAt') found.\n Must be 'top', 'bottom', or Object.\n (https://github.com/webpack-contrib/style-loader#insertat)\n");
@@ -867,7 +905,16 @@ function removeStyleElement (style) {
 function createStyleElement (options) {
 	var style = document.createElement("style");
 
-	options.attrs.type = "text/css";
+	if(options.attrs.type === undefined) {
+		options.attrs.type = "text/css";
+	}
+
+	if(options.attrs.nonce === undefined) {
+		var nonce = getNonce();
+		if (nonce) {
+			options.attrs.nonce = nonce;
+		}
+	}
 
 	addAttrs(style, options.attrs);
 	insertStyleElement(options, style);
@@ -878,7 +925,9 @@ function createStyleElement (options) {
 function createLinkElement (options) {
 	var link = document.createElement("link");
 
-	options.attrs.type = "text/css";
+	if(options.attrs.type === undefined) {
+		options.attrs.type = "text/css";
+	}
 	options.attrs.rel = "stylesheet";
 
 	addAttrs(link, options.attrs);
@@ -893,12 +942,20 @@ function addAttrs (el, attrs) {
 	});
 }
 
+function getNonce() {
+	if (false) {}
+
+	return __webpack_require__.nc;
+}
+
 function addStyle (obj, options) {
 	var style, update, remove, result;
 
 	// If a transform function was defined, run it on the css
 	if (options.transform && obj.css) {
-	    result = options.transform(obj.css);
+	    result = typeof options.transform === 'function'
+		 ? options.transform(obj.css) 
+		 : options.transform.default(obj.css);
 
 	    if (result) {
 	    	// If transform returns a value, use that instead of the original css.

@@ -1,44 +1,45 @@
-var path = require('path')
-var webpack = require('webpack')
-var WebpackBuildNotifierPlugin = require('webpack-build-notifier')
-var HtmlWebpackPlugin = require('html-webpack-plugin')
+var path = require("path")
+var webpack = require("webpack")
+var WebpackBuildNotifierPlugin = require("webpack-build-notifier")
+var HtmlWebpackPlugin = require("html-webpack-plugin")
 
 const PATHS = {
   src: __dirname,
-  build: path.join(__dirname, './build')
+  build: path.join(__dirname, "./build")
 }
 
 module.exports = {
-  mode: 'development',
+  mode: "development",
 
   entry: {
-    'app': PATHS.src + '/index.ts'
+    app: PATHS.src + "/index.ts"
   },
   output: {
     path: PATHS.build,
-    filename: '[name].js'
+    filename: "[name].js"
   },
-  devtool: 'source-map',
+  devtool: "source-map",
   module: {
     rules: [
       {
         test: /\.ts$/,
-        loader: 'awesome-typescript-loader'
+        loader: "awesome-typescript-loader"
       },
       {
         test: /\.p?css$/,
         use: [
           {
-            loader: 'style-loader'
+            loader: "style-loader"
           },
           {
-            loader: 'css-loader',
+            loader: "css-loader",
             options: {
-              importLoaders: 1, url: false
+              importLoaders: 1,
+              url: false
             }
           },
           {
-            loader: 'postcss-loader'
+            loader: "postcss-loader"
           }
         ]
       }
@@ -46,17 +47,17 @@ module.exports = {
   },
   resolve: {
     // you can now require('file') instead of require('file.js')
-    extensions: ['.ts', '.js']
+    extensions: [".ts", ".js"]
   },
   plugins: [
     new WebpackBuildNotifierPlugin({
-      title: 'My Project Webpack Build'
+      title: "My Project Webpack Build"
     }),
     new HtmlWebpackPlugin({
-      title: 'Webpack boilerplate',
+      title: "Webpack boilerplate",
       hash: true,
-      filename: 'index.html',
-      template: 'index.html'
+      filename: "index.html",
+      template: "index.html"
     })
   ]
 }
