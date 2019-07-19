@@ -1,0 +1,18 @@
+{
+  "name": "typescriptImport",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "watch": "webpack -w"
+  },
+  "devDependencies": {
+    "awesome-typescript-loader": "5.2.1",
+    "css-loader": "^3.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "style-loader": "^0.23.1",
+    "typescript": "^3.5.3",
+    "webpack": "^4.35.3",
+    "webpack-build-notifier": "^1.0.3",
+    "webpack-cli": "^3.3.6"
+  }
+}

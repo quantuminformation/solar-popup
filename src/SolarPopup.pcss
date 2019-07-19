@@ -1,0 +1,53 @@
+/* mobile first styles */
+@import "css-variables/breakpoints/generic.pcss";
+
+:root {
+  /*dark theme*/
+  --background: #06071a;
+  --border: #04bbff;
+  --color: #fff;
+  --form-padding: 50px;
+  --popup-width: 250px;
+}
+
+.solar-popup {
+  position: fixed;
+  z-index: 10000;
+  padding: 10px;
+  width: var(--popup-width);
+  top: 10px;
+  box-sizing: border-box;
+  color: var(--color);
+  transition: all 300ms ease;
+  background-color: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  left: calc(50% - (var(--popup-width) / 2));
+
+  h1,
+  h2,
+  h3 {
+    color: aqua;
+  }
+
+  &[data-is-initialising="true"] {
+    /*todo cater for bigger screens*/
+    left: calc(var(--popup-width) * -1) !important;
+  }
+  &[data-is-destructing="true"] {
+    /*todo cater for bigger screens*/
+    left: 100%;
+  }
+
+  @media (--minSmall) {
+    top: 20%;
+  }
+  .close {
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    font-size: 16px;
+    padding: 2px;
+  }
+}
