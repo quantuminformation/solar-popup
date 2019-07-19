@@ -114,6 +114,11 @@ export class SolarPopup implements IComponent {
 
     return new Promise(resolve => {
       setTimeout(() => {
+        console.log("host ")
+        console.log(this.hostElement)
+        console.log("parent")
+        console.log(this.hostElement.parentElement)
+
         this.hostElement.parentElement.removeChild(this.hostElement)
         resolve()
       }, constants.TRANSITION_TIMES)
