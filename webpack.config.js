@@ -4,7 +4,7 @@ var WebpackBuildNotifierPlugin = require('webpack-build-notifier')
 
 const PATHS = {
   src: path.join(__dirname, './src'),
-  build: path.join(__dirname, './build')
+  dist: path.join(__dirname, './dist')
 }
 
 module.exports = {
@@ -13,7 +13,7 @@ module.exports = {
     'solar-popup': PATHS.src + '/index.ts'
   },
   output: {
-    path: PATHS.build,
+    path: PATHS.dist,
     filename: '[name].js',
     libraryTarget: 'umd'
   },

@@ -5,7 +5,7 @@ var HtmlWebpackPlugin = require("html-webpack-plugin")
 
 const PATHS = {
   src: __dirname,
-  build: path.join(__dirname, "./build")
+  dist: path.join(__dirname, "./dist")
 }
 
 module.exports = {

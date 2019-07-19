@@ -2,8 +2,8 @@
   "name": "solar-popup",
   "version": "0.4.14",
   "description": "",
-  "main": "build/solar-popup.js",
-  "types": "build/SolarPopup.d.ts",
+  "main": "dist/solar-popup.js",
+  "types": "dist/SolarPopup.d.ts",
   "files": [
     "demo/browserImport/index.html",
     "build"
