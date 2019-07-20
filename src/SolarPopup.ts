@@ -21,6 +21,11 @@ export class SolarPopup implements IComponent {
   destroyBoundWithThis = this.destroy.bind(this)
   modalBackground = new ModalBackground()
   hostElement: HTMLElement
+  keyupHandler = event => {
+    if (event.keyCode === KeyCodes.ESC) {
+      this.destroyBoundWithThis()
+    }
+  }
 
   constructor(child: HTMLElement, optionalDimensions?: OptionalDimensions) {
     const tempElement: HTMLElement = document.createElement("DIV")
@@ -33,7 +38,7 @@ export class SolarPopup implements IComponent {
     this.hostElement.querySelector(".childContainer").appendChild(child)
 
     var htmlStyles = window.getComputedStyle(document.querySelector("html"))
-    var myColor = htmlStyles.getPropertyValue("--popup-width") // returns "#f00"
+    var popupWidth = htmlStyles.getPropertyValue("--popup-width") // todo, use to center popup
 
     if (optionalDimensions) {
       if (window.innerWidth > 2 * 10 + optionalDimensions.width) {
@@ -44,9 +49,6 @@ export class SolarPopup implements IComponent {
         this.hostElement.style.height = `${optionalDimensions.height}px`
       }
     }
-
-    var htmlStyles = window.getComputedStyle(document.querySelector("html"))
-    var myColor = htmlStyles.getPropertyValue("--popup-width") // returns "#f00"
   }
 
   /**
@@ -66,13 +68,8 @@ export class SolarPopup implements IComponent {
       })
       // when the popup is has finished moving via the css transition resolve the promise to tell the callee
       setTimeout(() => {
-        // todo use dynamic width for better centering
-        // let currentWidth = window.getComputedStyle(document.querySelector('p')) }, 50)
-
         this.addListeners()
         resolve()
-        var htmlStyles = window.getComputedStyle(document.querySelector("html"))
-        var myColor = htmlStyles.getPropertyValue("--popup-width") // returns "#f00"
       }, constants.TRANSITION_TIMES)
     })
   }
@@ -82,22 +79,12 @@ export class SolarPopup implements IComponent {
     closeElement.addEventListener("click", this.destroyBoundWithThis)
     this.hostElement.classList.remove("offscreen")
 
-    document.addEventListener(
-      "keyup",
-      function(event) {
-        if (event.keyCode === KeyCodes.ESC) {
-          this.destroyBoundWithThis()
-        }
-      }.bind(this)
-    )
+    document.addEventListener("keyup", this.keyupHandler)
 
-    this.hostElement.addEventListener(
-      "submit",
-      function(event) {
-        this.destroyBoundWithThis()
-        event.preventDefault()
-      }.bind(this)
-    )
+    this.hostElement.addEventListener("submit", event => {
+      this.destroyBoundWithThis()
+      event.preventDefault()
+    })
 
     // handle the first child submit button click, close popup by default
     // this is a convention that gets popup to behave in sensible way
@@ -114,12 +101,11 @@ export class SolarPopup implements IComponent {
 
     return new Promise(resolve => {
       setTimeout(() => {
-        console.log("host ")
-        console.log(this.hostElement)
-        console.log("parent")
-        console.log(this.hostElement.parentElement)
+        // previous popup won't be removed from garbage collector in time
+        document.removeEventListener("keyup", this.keyupHandler)
 
         this.hostElement.parentElement.removeChild(this.hostElement)
+
         resolve()
       }, constants.TRANSITION_TIMES)
     })
