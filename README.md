@@ -1,6 +1,4 @@
-<!---
 <img src="https://codeship.com/projects/d17a6c50-f8fa-0134-9e36-76184fa5b855/status?branch=master"/>
---->
 
 # Solar-popup
 
@@ -11,7 +9,7 @@ Ultralight, ultra fast, ultra smooth Vanilla TypeScript popup. Framework indepen
 ## installation
 
 You can install into your application by running
-npm install --save-dev solar-popup
+`npm i solar-popup`
 
 You can then use it like so:
 
@@ -35,13 +33,14 @@ You can also import the default styles solar-popup.css which will style it for y
 
 ## Why
 
-I made this popup was for my own consumption, but you are free to use it too!
+I made this popup because I had a requirement for a slide-in and slide-out popup with smooth CSS transitions, including a fade-in and fade-out
+modal background. I also wanted hooks for once the popup had left the screen and being able to inject arbitrary html inside it.
 
 ## Features
 
 - It will close on ESC press key, clicking on the close x button anchor or submit events from children
-- Adds a modal background that fades in with CSS3 transitions
-- Popup itself slides in with CSS3 transitions
+- Adds a modal background that fades in/our with CSS3 transitions
+- Popup itself slides in/out with CSS3 transitions
 
 ## Demo
 
@@ -56,6 +55,7 @@ Feel free to watch the video explanation of how it works here:
 alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
 
 # Testing
+
 ```
 npm i
 npm test
