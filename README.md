@@ -45,7 +45,7 @@ I made this popup was for my own consumption, but you are free to use it too!
 
 ## Demo
 
-[Live Demo](https://quantumjs.github.io/solar-popup/demo/browserImport)
+[Live Demo](https://quantumjs.github.io/solar-popup/demo/dist/)
 
 ## Video demo
 

@@ -1,6 +1,6 @@
 {
   "name": "solar-popup",
-  "version": "0.4.14",
+  "version": "0.5.0",
   "description": "",
   "main": "dist/solar-popup.js",
   "types": "dist/SolarPopup.d.ts",
