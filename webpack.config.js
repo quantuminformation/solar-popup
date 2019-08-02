@@ -8,36 +8,37 @@ const PATHS = {
 }
 
 module.exports = {
-  mode: 'development',
+  mode: "development",
   entry: {
-    'solar-popup': PATHS.src + '/index.ts'
+    "solar-popup": PATHS.src + "/index.ts"
   },
   output: {
     path: PATHS.dist,
-    filename: '[name].js',
-    libraryTarget: 'umd'
+    filename: "[name].js",
+    libraryTarget: "umd"
   },
-  devtool: 'source-map',
+  devtool: "source-map",
   module: {
     rules: [
       {
         test: /\.ts$/,
-        loader: 'awesome-typescript-loader'
+        loader: "awesome-typescript-loader"
       },
       {
         test: /\.p?css$/,
         use: [
           {
-            loader: 'style-loader'
+            loader: "style-loader"
           },
           {
-            loader: 'css-loader',
+            loader: "css-loader",
             options: {
-              importLoaders: 1, url: false
+              importLoaders: 1,
+              url: false
             }
           },
           {
-            loader: 'postcss-loader'
+            loader: "postcss-loader"
           }
         ]
       }
@@ -45,11 +46,11 @@ module.exports = {
   },
   resolve: {
     // you can now require('file') instead of require('file.js')
-    extensions: ['.ts', '.js']
+    extensions: [".ts", ".js"]
   },
   plugins: [
     new WebpackBuildNotifierPlugin({
-      title: 'My Project Webpack Build'
+      title: "My Project Webpack Build"
     }),
     new webpack.IgnorePlugin(/test\.ts$/)
   ]

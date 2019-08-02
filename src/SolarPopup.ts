@@ -3,8 +3,6 @@ import { IComponent, KeyCodes, OptionalDimensions } from "vanilla-typescript"
 import "./SolarPopup.pcss"
 import { constants } from "./constants"
 
-// re-export stuff //todo maybe a better way to do this
-
 /**
  * A Popup that can take any content
  *

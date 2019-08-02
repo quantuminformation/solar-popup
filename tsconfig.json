@@ -3,13 +3,13 @@
     "target": "es2015",
     "declaration": true,
     "moduleResolution": "node",
-    "declarationDir": "./build"
+    "declarationDir": "./dist"
 
   },
   "exclude": [
     "node_modules",
     "demo",
-    "build"
+    "dist"
   ]
 }
 
